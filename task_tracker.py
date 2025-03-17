@@ -1,5 +1,6 @@
 import pandas as pd
 from datetime import datetime
+import matplotlib.pyplot as plt
 
 # Step 1: Sample Data (Tasks, Resources, Status)
 data = {
@@ -45,3 +46,11 @@ print("\nTasks by Team Member:")
 print(tasks_by_member)
 print("\nRemaining Days for Each Task:")
 print(df[['Task_Name', 'Remaining_Days']])
+
+# Step 9: Create a visualization (Task Status Distribution Pie Chart)
+status_count = df['Status'].value_counts()
+status_count.plot(kind='pie', autopct='%1.1f%%', startangle=90, colors=['#ff9999','#66b3ff','#99ff99'])
+plt.title('Task Status Distribution')
+plt.ylabel('')  # Hide the y-label
+plt.savefig('images/project_task_tracker_result.png')  # Save the image
+plt.show()
